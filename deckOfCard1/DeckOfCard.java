@@ -47,5 +47,18 @@ public class DeckOfCard {
 			list.get(i).setPlayerTurn(turn);
 		}
 	}
+	public void shuffle() {
+		Random rand = new Random();
+		for (int i = 0; i < deckOfCards.length; i++) {
+			String[] tempArray = deckOfCards[i];
+			for (int j = 0; j < tempArray.length; j++) {
+				int random = j + rand.nextInt(tempArray.length - j);
+				String temp = tempArray[random];
+				tempArray[random] = tempArray[j];
+				tempArray[j] = temp;
+			}
+			deckOfCards[i] = tempArray;
+		}
+	}
 
 }
