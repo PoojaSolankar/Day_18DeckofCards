@@ -11,6 +11,7 @@ public class DeckOfCard {
 	private static final String[] RANK = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
 	private static final String[][] deckOfCards = { SUIT, RANK };
 	private static final Card[] card_deck = new Card[52];
+	private static final List<Player> list = new ArrayList<>();
 	private static final Scanner sc = new Scanner(System.in);
 	Map<String, HashMap<String, Integer>> playerCardInfo = new HashMap<>();
 
@@ -21,6 +22,23 @@ public class DeckOfCard {
 				card_deck[i++] = new Card(s, value);
 			}
 		}
+	}
+	public void addPlayer(int numberOfPlayers) {
+		System.out.println("Enter Players Details");
+		
+			for (int i = 0; i < numberOfPlayers; i++) {
+				System.out.println("Enter first name");
+				String first_name = sc.nextLine();
+				System.out.println("Enter second name");
+				String second_name = sc.nextLine();
+				System.out.println("Enter player turn");
+				int playerTurn = sc.nextInt();
+				Player player = new Player(second_name, first_name, playerTurn);
+				list.add(player);
+				for (Player value : list) {
+					System.out.println(value);
+				}
+			}
 	}
 
 }
