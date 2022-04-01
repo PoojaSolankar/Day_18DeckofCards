@@ -92,5 +92,25 @@ public class DeckOfCard {
 		for (Map.Entry<String, HashMap<String, Integer>> entry : playerCardInfo.entrySet())
 			System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 	}
-
+	public void displayCardSortByRank()   {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("Player" + (i + 1) + " cards");
+			Card[] cardArray = list.get(i).getCard();
+			Arrays.sort(cardArray, new SortbyRank());
+			for (Card card : cardArray) {
+				System.out.println(card);
+			}
+			System.out.println();
+		   }
+		}
 }
+ 	class SortbyRank implements Comparator<Card> {
+		
+		@Override
+		public int compare(Card card1, Card card2) {
+			if (Objects.equals(card1.getRank(), card2.getRank())) {
+			return card1.getSuit().compareTo(card2.getSuit());
+		 }
+			return card1.getRank().compareTo(card2.getRank());
+		}	
+ 	}		

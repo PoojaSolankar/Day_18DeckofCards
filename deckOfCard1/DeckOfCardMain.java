@@ -14,5 +14,6 @@ public class DeckOfCardMain {
 		deckOfCard.shuffle();
 		deckOfCard.distributeCards();
 		deckOfCard.displayCard();
+		deckOfCard.displayCardSortByRank();
 	}
 }
