@@ -10,6 +10,6 @@ public class DeckOfCardMain {
 		int numOfPlayers = sc.nextInt();
 		DeckOfCard deckOfCard = new DeckOfCard();
 		deckOfCard.addPlayer(numOfPlayers);
-		
+		deckOfCard.orderPlayerTurn(numOfPlayers);
 	}
 }
