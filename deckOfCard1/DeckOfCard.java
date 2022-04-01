@@ -60,5 +60,37 @@ public class DeckOfCard {
 			deckOfCards[i] = tempArray;
 		}
 	}
+	public void distributeCards() {
+		list.stream().sorted(Comparator.comparingInt(Player::getPlayerTurn)).collect(Collectors.toList());
+		for (int p = 0; p < list.size(); p++) {
+			int count = 0;
+			int cardIndex = p;
+			Card[] cardSet = new Card[9];
+			while (count < 9) {
+				Card card = card_deck[cardIndex];
+				cardSet[count] = card;
+				cardIndex += 5;
+				count++;
+			}
+			list.get(p).setCard(cardSet);
+		}
+	}
+	public void displayCard() {
+		for (Player player : list) {
+			HashMap<String, Integer> cardInfo = new HashMap<>();
+			Card[] cardArray = player.getCard();
+			for (Card card : cardArray) {
+				if (cardInfo.containsKey(card.getSuit())) {
+					Integer value = cardInfo.get(card.getSuit());
+					cardInfo.put(card.getSuit(), value + 1);
+				} else {
+					cardInfo.put(card.getSuit(), 1);
+				}
+			}
+			playerCardInfo.put(player.getFirstName(), cardInfo);
+		}
+		for (Map.Entry<String, HashMap<String, Integer>> entry : playerCardInfo.entrySet())
+			System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+	}
 
 }
